@@ -3,35 +3,51 @@
 
 using namespace std;
 
-int main() {
-    int n = 20;
-    int myList[n];
+int* generateRandomList(int n) {
+    int* myList = new int[n];
 
     srand(time(0));
     for (int i = 0; i < n; i++) {
-        myList[i] = rand() % 100; // números aleatórios de 0 a 99
-        cout << myList[i] << " ";
+        myList[i] = rand() % 100; 
     }
 
-    cout << endl;
+    return myList;
+}
 
-    int i = 0;
-    while(i < n) {
+void selectionSort(int* list, int n) {
+    for(int i = 0; i < (n - 1); i++) {
+        int minIndex = i;
+
         for (int j = i + 1; j < n; j++) {
-            if(myList[j] < myList[i]) {
-                int temp = myList[i];
-                myList[i] = myList[j];
-                myList[j] = temp;
+            if(list[j] < list[minIndex]) {
+                minIndex = j;
             }
         }
-        i++;
-    }
 
+        if(minIndex != i) {
+            int temp = list[i];
+            list[i] = list[minIndex];
+            list[minIndex] = temp;
+        }
+    }
+}
+
+void printList(int* list, int n) {
     for (int i = 0; i < n; i++) {
-        cout << myList[i] << " ";
+        cout << list[i] << " ";
     }
 
     cout << endl;
+}
+
+int main() {
+    int n = 20;
+    int *myList = generateRandomList(n);
+    printList(myList, n);
+
+    selectionSort(myList, n);
+    printList(myList, n);
 
     return 0;
 }
+
