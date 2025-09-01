@@ -14,28 +14,6 @@ int* generateRandomList(int n) {
     return myList;
 }
 
-void swap(int *l, int *r) {
-    int temp = *l;
-    *l = *r;
-    *r = temp;
-}
-
-void selectionSort(int* list, int n) {
-    for(int i = 0; i < (n - 1); i++) {
-        int minIndex = i;
-
-        for (int j = i + 1; j < n; j++) {
-            if(list[j] < list[minIndex]) {
-                minIndex = j;
-            }
-        }
-
-        if(minIndex != i) {
-            swap(&list[i], &list[minIndex]);
-        }
-    }
-}
-
 void printList(int* list, int n) {
     for (int i = 0; i < n; i++) {
         cout << list[i] << " ";
@@ -44,12 +22,32 @@ void printList(int* list, int n) {
     cout << endl;
 }
 
+void swap(int *l, int *r) {
+    int temp = *l;
+    *l = *r;
+    *r = temp;
+}
+
+void insertionSort(int *list, int size) {
+    for(int i = 1; i < size; i++) {
+        int temp = list[i];
+        int j = i - 1;
+
+        while(j >= 0 && list[j] > temp) {
+            list[j + 1] = list[j];
+            j--;
+        }
+        
+        list[j + 1] = temp;
+    }
+}
+
 int main() {
     int n = 20;
     int *myList = generateRandomList(n);
     printList(myList, n);
 
-    selectionSort(myList, n);
+    insertionSort(myList, n);
     printList(myList, n);
 
     delete[] myList;
