@@ -1,6 +1,6 @@
 # Algoritmos de Ordenação
 
-Este repositório contém implementações em C++. Os algoritmos foram desenvolvidos como parte do estudo de Estrutura de Dados na UNEMAT.
+Este repositório contém implementações de algoritmos de ordenação em C++. Os algoritmos foram desenvolvidos como parte do estudo de Estrutura de Dados na UNEMAT.
 
 ## 🔍 Algoritmos Implementados
 
