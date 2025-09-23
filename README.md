@@ -90,6 +90,46 @@ O Quick Sort é um algoritmo eficiente de ordenação baseado na estratégia de 
 - ✅ Utiliza divisão e conquista
 - ❌ Pior caso ocorre quando a partição é muito desbalanceada
 
+### 5. Merge Sort
+
+**Arquivo:** `merge_sort.cpp`
+
+O Merge Sort é um algoritmo eficiente e estável baseado em divisão e conquista. Ele divide a lista em duas partes, ordena cada parte recursivamente e depois mescla as partes ordenadas.
+
+#### Como funciona:
+- Divide a lista em duas metades
+- Ordena cada metade recursivamente
+- Mescla as duas metades ordenadas em uma única lista ordenada
+
+#### Complexidade:
+- **Tempo:** O(n log n) em todos os casos
+- **Espaço:** O(n) (necessário para armazenar as sublistas temporárias)
+
+#### Características:
+- ✅ Algoritmo estável
+- ✅ Performance consistente
+- ❌ Usa espaço extra proporcional ao tamanho da lista
+
+### 6. Counting Sort
+
+**Arquivo:** `counting_sort.cpp`
+
+O Counting Sort é um algoritmo não comparativo eficiente para ordenar inteiros dentro de um intervalo conhecido. Ele conta a ocorrência de cada valor e utiliza essas contagens para posicionar os elementos ordenadamente.
+
+#### Como funciona:
+- Conta quantas vezes cada valor aparece na lista
+- Calcula a posição de cada valor na lista ordenada
+- Reconstrói a lista ordenada usando as contagens
+
+#### Complexidade:
+- **Tempo:** O(n + k), onde k é o valor máximo na lista
+- **Espaço:** O(k) para o array de contagem
+
+#### Características:
+- ✅ Algoritmo estável
+- ✅ Muito rápido para listas com valores inteiros pequenos
+- ❌ Não serve para ordenar valores não inteiros ou intervalos muito grandes
+
 ## 🛠️ Como Compilar e Executar
 
 ### Pré-requisitos
@@ -111,6 +151,8 @@ g++ -o bubble_sort bubble_sort.cpp
 g++ -o insertion_sort insertion_sort.cpp
 g++ -o selection_sort selection_sort.cpp
 g++ -o quick_sort quick_sort.cpp
+g++ -o merge_sort merge_sort.cpp
+g++ -o counting_sort counting_sort.cpp
 ```
 
 ### Execução
@@ -120,6 +162,8 @@ g++ -o quick_sort quick_sort.cpp
 ./insertion_sort.exe
 ./selection_sort.exe
 ./quick_sort.exe
+./merge_sort.exe
+./counting_sort.exe
 ```
 
 Ou usando a task do VS Code:
@@ -129,12 +173,14 @@ Ou usando a task do VS Code:
 
 ## 📊 Comparação de Performance
 
-| Algoritmo      | Melhor Caso | Caso Médio | Pior Caso | Estável | Espaço |
-| -------------- | ----------- | ---------- | --------- | ------- | ------ |
-| Bubble Sort    | O(n)        | O(n²)      | O(n²)     | ✅      | O(1)   |
-| Insertion Sort | O(n)        | O(n²)      | O(n²)     | ✅      | O(1)   |
-| Selection Sort | O(n²)       | O(n²)      | O(n²)     | ❌      | O(1)   |
-| Quick Sort     | O(n log n)  | O(n log n) | O(n²)     | ❌      | O(log n) |
+| Algoritmo      | Melhor Caso | Caso Médio | Pior Caso | Estável | Espaço     |
+| -------------- | ----------- | ---------- | --------- | ------- | ---------- |
+| Bubble Sort    | O(n)        | O(n²)      | O(n²)     | ✅      | O(1)       |
+| Insertion Sort | O(n)        | O(n²)      | O(n²)     | ✅      | O(1)       |
+| Selection Sort | O(n²)       | O(n²)      | O(n²)     | ❌      | O(1)       |
+| Quick Sort     | O(n log n)  | O(n log n) | O(n²)     | ❌      | O(log n)   |
+| Merge Sort     | O(n log n)  | O(n log n) | O(n log n)| ✅      | O(n)       |
+| Counting Sort  | O(n + k)    | O(n + k)   | O(n + k)  | ✅      | O(k)       |
 
 ## 🧪 Funcionalidades Comuns
 
@@ -146,7 +192,6 @@ Todos os programas incluem:
 - **Função principal**: Demonstra o algoritmo com uma lista de 20 elementos
 
 ## 📈 Quando Usar Cada Algoritmo
-
 
 ### Use Bubble Sort quando:
 - Implementação simples for prioridade
@@ -168,6 +213,17 @@ Todos os programas incluem:
 - Performance for prioridade
 - Não for necessário manter a ordem de elementos iguais (não estável)
 - Espaço extra limitado (usa apenas pilha de recursão)
+
+### Use Merge Sort quando:
+- Precisa de performance consistente e estável
+- Lista for grande e espaço extra não for problema
+- Ordenação estável for necessária
+
+### Use Counting Sort quando:
+- Lista contém inteiros em intervalo pequeno
+- Performance máxima for prioridade
+- Ordenação estável for necessária
+- Não precisa ordenar valores não inteiros
 
 ## 📚 Conceitos Aprendidos
 
