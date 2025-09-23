@@ -28,50 +28,6 @@ void swap(int *l, int *r) {
     *r = temp;
 }
 
-void merge(int *list, int left, int mid, int right) {
-    // Calcula o tamanho das sublistas esquerda (n1) e direita (n2)
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-
-    // Cria arrays temporários para armazenar os elementos das sublistas
-    int* L = new int[n1];
-    int* R = new int[n2];
-
-    // Copia os elementos correspondentes da lista original para as sublistas
-    for (int i = 0; i < n1; i++) L[i] = list[left + i]; // sublista esquerda
-    for (int i = 0; i < n2; i++) R[i] = list[mid + 1 + i]; // sublista direita
-
-    // i percorre a sublista esquerda, j percorre a direita, k percorre a lista original
-    int i = 0, j = 0, k = left;
-
-    // Intercala os elementos das duas sublistas de volta na lista original em ordem
-    while (i < n1 && j < n2) {
-        if(L[i] <= R[j]) {
-            list[k] = L[i];
-            i++;
-        } else {
-            list[k] = R[j];
-            j++;
-        }
-        k++;
-    }
-
-    // Copia qualquer elemento restante da sublista esquerda
-    while(i < n1) {
-        list[k] = L[i];
-        i++; k++;
-    }
-    // Copia qualquer elemento restante da sublista direita
-    while(j < n2) {
-        list[k] = R[j];
-        j++; k++;
-    }
-
-    // Libera a memória alocada dinamicamente para as sublistas
-    delete[] L;
-    delete[] R;
-}
-
 void countingSort(int *list, int n) {
     int maxElement = 0;
 
