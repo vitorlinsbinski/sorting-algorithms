@@ -72,29 +72,39 @@ void merge(int *list, int left, int mid, int right) {
     delete[] R;
 }
 
-void mergeSort(int *list, int left, int right) {
-    // Só processa se o segmento tiver pelo menos 2 elementos
-    if(left < right) {
-        // Calcula o índice do meio para dividir a lista
-        int mid = left + (right - left) / 2;
+void countingSort(int *list, int n) {
+    int maxElement = 0;
 
-        // Ordena recursivamente a metade esquerda
-        mergeSort(list, left, mid);
-
-        // Ordena recursivamente a metade direita
-        mergeSort(list, mid + 1, right);
-
-        // Mescla as duas metades ordenadas
-        merge(list, left, mid, right);
+    for(int i = 0; i < n; i++) {
+        if(list[i] > maxElement) {
+            maxElement = list[i];
+        }
     }
+
+    int* auxList = new int[maxElement + 1]();
+
+    for(int i = 0; i < n; i++) {
+        auxList[list[i]]++;
+    }
+
+    int index = 0;
+    for(int i = 0; i <= maxElement; i++) {
+        while(auxList[i] > 0) {
+            list[index] = i;
+            index++;
+            auxList[i]--;
+        }
+    }
+
+    delete[] auxList;
 }
 
 int main() {
-    int n = 2000;
+    int n = 20;
     int *myList = generateRandomList(n);
     printList(myList, n);
 
-    mergeSort(myList, 0, n - 1);
+    countingSort(myList, n);
     printList(myList, n);
     return 0;
 }
