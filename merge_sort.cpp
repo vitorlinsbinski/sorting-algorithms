@@ -3,12 +3,12 @@
 
 using namespace std;
 
-int* generateRandomList(int n) {
+int* generateRandomList(int n, int interval) {
     int* myList = new int[n];
 
     srand(time(0));
     for (int i = 0; i < n; i++) {
-        myList[i] = rand() % 100; 
+        myList[i] = rand() % interval; 
     }
 
     return myList;
@@ -90,8 +90,9 @@ void mergeSort(int *list, int left, int right) {
 }
 
 int main() {
-    int n = 2000;
-    int *myList = generateRandomList(n);
+    int n = 20;
+    int interval = 1000;
+    int *myList = generateRandomList(n, interval);
     printList(myList, n);
 
     mergeSort(myList, 0, n - 1);
